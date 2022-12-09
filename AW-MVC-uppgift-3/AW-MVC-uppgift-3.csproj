@@ -8,9 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Update="DataStorage\EmployeesDataSet.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Folder Include="DataStorage\" />
   </ItemGroup>
 
 </Project>

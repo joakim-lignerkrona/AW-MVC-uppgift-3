@@ -1,22 +1,17 @@
-﻿@using System.Globalization;
-@using AW_MVC_uppgift_3.Models;
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+﻿@model Employee
 
-
-@model Employee
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
-    <title>My Title</title>
-</head>
-<body>
-    <h1>@Model.Name</h1>
-    <h5>@Model.Email</h5>
-    <form asp-controller="Employees" asp-action="Delete">
-        <input type="hidden" name="id" value="@Model.Id" />
-        <input type="submit" value="Delete" />
-    </form>
-
-</body>
-</html>
+@{
+    ViewBag.Title = $"{Model.Name} - Details";
+    ViewBag.Heading = "Employee Details";
+}
+<div class="bg-secondary text-light p-5 rounded-5">
+<h1>@Model.Name</h1>
+<h5>Email: @Model.Email</h5>
+    <form asp-controller="Employees" asp-action="Delete" asp-route-itemid="@Model.Id">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group mt-5">
+        <a asp-controller="Employees" asp-action="Create" asp-route-itemid="" class="btn btn-light">Back</a>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </div>
+</form>
+</div>

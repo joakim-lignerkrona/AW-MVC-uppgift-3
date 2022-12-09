@@ -4,7 +4,7 @@ namespace AW_MVC_uppgift_3.Models
 {
     public class DataService
     {
-        static List<Employee> employees;
+        List<Employee> employees;
 
         string path = Environment.CurrentDirectory + @"\DataStorage\EmployeesDataSet.json";
 
@@ -30,6 +30,7 @@ namespace AW_MVC_uppgift_3.Models
                 }
                 catch
                 {
+
                     employees = new List<Employee>();
                     saveToDisk();
                 }
@@ -49,7 +50,16 @@ namespace AW_MVC_uppgift_3.Models
         }
         public void Add(Employee employee)
         {
-            employee.Id = employees.Max(e => e.Id) + 1;
+            int newID;
+            try
+            {
+                newID = employees.Max(e => e.Id) + 1;
+            }
+            catch(InvalidOperationException)
+            {
+                newID = 1;
+            }
+            employee.Id = newID;
             employees.Add(employee);
             saveToDisk();
         }

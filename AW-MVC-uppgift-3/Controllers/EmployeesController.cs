@@ -8,9 +8,9 @@ namespace ACME.Controllers
     {
 
         DataService service;
-        public EmployeesController()
+        public EmployeesController(DataService service)
         {
-            service = new DataService();
+            this.service = service;
         }
         [HttpGet(""), HttpGet("index")]
         public IActionResult Index()
@@ -33,13 +33,13 @@ namespace ACME.Controllers
             service.Add(employee);
             return RedirectToAction(nameof(Index));
         }
-        [HttpGet("details")]
+        [HttpGet("details/{id}")]
         public IActionResult Details(int id)
         {
             var employee = service.GetById(id);
             return View(employee);
         }
-        [HttpPost("dogs/delete/")]
+        [HttpPost("dogs/delete/{id}")]
         public IActionResult Delete(int id)
         {
 
