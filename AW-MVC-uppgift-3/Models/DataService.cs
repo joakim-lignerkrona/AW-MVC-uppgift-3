@@ -28,6 +28,7 @@ namespace AW_MVC_uppgift_3.Models
                 }
                 catch
                 {
+
                     employees = new List<Employee>();
                     saveToDisk();
                 }
@@ -46,7 +47,9 @@ namespace AW_MVC_uppgift_3.Models
         }
         public void Add(Employee employee)
         {
+
             employee.Id = employees.Count == 0 ? 1 : employees.Max(e => e.Id) + 1;
+
             employees.Add(employee);
             saveToDisk();
         }

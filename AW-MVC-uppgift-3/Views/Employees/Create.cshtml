@@ -1,19 +1,30 @@
 ﻿@model Employee
 
-<form asp-controller="Employees" asp-action="Create">
-    <label asp-for="Name"></label>
-    <input asp-for="Name" />
-    <span asp-validation-for="Name"></span><br />
-    <label asp-for="Email"></label>
-    <input asp-for="Email" type="email" />
-    <span asp-validation-for="Email"></span>
-    <br />
-    <input type="submit" value="Add" />
-</form>
-<div asp-validation-summary="All"></div>
+@{
+    ViewBag.Title = "Add Employee";
+    ViewBag.Heading = "Add Employee";
+}
 
-@section scripts {
+<div class="row d-flex justify-content-center">
+    <div class="col-8">
+        <div asp-validation-summary="All"></div>
+        <form asp-controller="Employees" asp-action="Create">
+            <label asp-for="Name" class="form-label"></label>
+            <span asp-validation-for="Name" class="text-danger"></span>
+            <input asp-for="Name" class="form-control" />
+            <label asp-for="Email" class="form-label"></label>
+            <span asp-validation-for="Email" class="text-danger"></span>
+            <input asp-for="Email" type="email" class="form-control" />
+            <br />
+            <input type="submit" value="Add" class="btn btn-primary" />
+        </form>
+    </div>
+</div>
+
+@section endOfBody
+    {
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.0.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.19.2/jquery.validate.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
-    }
+}
+

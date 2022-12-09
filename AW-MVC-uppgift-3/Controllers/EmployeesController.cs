@@ -35,13 +35,15 @@ namespace ACME.Controllers
             service.Add(employee);
             return RedirectToAction(nameof(Index));
         }
-        [HttpGet("details")]
+        [HttpGet("details/{id}")]
         public IActionResult Details(int id)
         {
             var employee = service.GetById(id);
             return View(employee);
         }
-        [HttpPost("employee/delete/")]
+
+        [HttpPost("dogs/delete/{id}")]
+
         public IActionResult Delete(int id)
         {
 
