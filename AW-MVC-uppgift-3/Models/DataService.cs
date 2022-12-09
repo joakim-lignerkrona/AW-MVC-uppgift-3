@@ -4,7 +4,7 @@ namespace AW_MVC_uppgift_3.Models
 {
     public class DataService
     {
-        static List<Employee> employees;
+        List<Employee> employees;
 
         string path = Environment.CurrentDirectory + @"\DataStorage\EmployeesDataSet.json";
 
@@ -14,8 +14,6 @@ namespace AW_MVC_uppgift_3.Models
             {
                 try
                 {
-
-
                     string jsonString = File.ReadAllText(path);
                     Employee[]? storedData = JsonSerializer.Deserialize<Employee[]>(jsonString);
                     if(storedData != null)
@@ -43,13 +41,12 @@ namespace AW_MVC_uppgift_3.Models
         }
         public Employee[] GetAll()
         {
-
             return employees
                 .ToArray();
         }
         public void Add(Employee employee)
         {
-            employee.Id = employees.Max(e => e.Id) + 1;
+            employee.Id = employees.Count == 0 ? 1 : employees.Max(e => e.Id) + 1;
             employees.Add(employee);
             saveToDisk();
         }

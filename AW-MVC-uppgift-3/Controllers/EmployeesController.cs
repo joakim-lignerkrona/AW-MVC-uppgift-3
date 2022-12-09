@@ -8,11 +8,13 @@ namespace ACME.Controllers
     {
 
         DataService service;
-        public EmployeesController()
+        public EmployeesController(DataService service)
         {
-            service = new DataService();
+            this.service = service;
         }
-        [HttpGet(""), HttpGet("index")]
+
+        [HttpGet("")]
+        [HttpGet("index")]
         public IActionResult Index()
         {
             var employees = service.GetAll();
@@ -28,7 +30,7 @@ namespace ACME.Controllers
         [HttpPost("create")]
         public IActionResult Create(Employee employee)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return View();
             service.Add(employee);
             return RedirectToAction(nameof(Index));
@@ -39,7 +41,7 @@ namespace ACME.Controllers
             var employee = service.GetById(id);
             return View(employee);
         }
-        [HttpPost("dogs/delete/")]
+        [HttpPost("employee/delete/")]
         public IActionResult Delete(int id)
         {
 
