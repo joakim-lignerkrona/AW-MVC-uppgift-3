@@ -14,8 +14,6 @@ namespace AW_MVC_uppgift_3.Models
             {
                 try
                 {
-
-
                     string jsonString = File.ReadAllText(path);
                     Employee[]? storedData = JsonSerializer.Deserialize<Employee[]>(jsonString);
                     if(storedData != null)
@@ -44,22 +42,14 @@ namespace AW_MVC_uppgift_3.Models
         }
         public Employee[] GetAll()
         {
-
             return employees
                 .ToArray();
         }
         public void Add(Employee employee)
         {
-            int newID;
-            try
-            {
-                newID = employees.Max(e => e.Id) + 1;
-            }
-            catch(InvalidOperationException)
-            {
-                newID = 1;
-            }
-            employee.Id = newID;
+
+            employee.Id = employees.Count == 0 ? 1 : employees.Max(e => e.Id) + 1;
+
             employees.Add(employee);
             saveToDisk();
         }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -6,6 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>AW_MVC_uppgift_3</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="DataStorage\" />
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="DataStorage\" />
