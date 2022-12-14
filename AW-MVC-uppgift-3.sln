@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAPI", "BlazorAPI\Blaz
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "EmployeesSQL", "EmployeesSQL\EmployeesSQL.sqlproj", "{BFFE4FF9-64AD-4E6A-825A-18B6B3C12D8C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BE00FA65-0E9F-431F-9749-2AEC05BF4BC6}"
+	ProjectSection(SolutionItems) = preProject
+		Kladd-streck.txt = Kladd-streck.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
