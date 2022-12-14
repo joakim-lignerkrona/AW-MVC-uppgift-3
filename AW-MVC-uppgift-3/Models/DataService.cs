@@ -1,70 +1,80 @@
-﻿using System.Text.Json;
+﻿using AW_MVC_uppgift_3.Models.Entities;
+using System.Text.Json;
 
 namespace AW_MVC_uppgift_3.Models
 {
     public class DataService
     {
-        List<Employee> employees;
+        private readonly EmployeeContext context;
+
+        //List<Employee> Employees;
 
         string path = Environment.CurrentDirectory + @"\DataStorage\EmployeesDataSet.json";
 
-        public DataService()
+        public DataService(EmployeeContext context)
         {
-            if(employees == null)
-            {
-                try
-                {
-                    string jsonString = File.ReadAllText(path);
-                    Employee[]? storedData = JsonSerializer.Deserialize<Employee[]>(jsonString);
-                    if(storedData != null)
-                    {
-                        employees = storedData.ToList();
+            this.context = context;
 
-                    }
-                    else
-                    {
-                        employees = new List<Employee>();
-                    }
-                }
-                catch
-                {
 
-                    employees = new List<Employee>();
-                    saveToDisk();
-                }
-            }
         }
+        //public DataService()
+        //{
+        //    if(Employees == null)
+        //    {
+        //        try
+        //        {
+        //            string jsonString = File.ReadAllText(path);
+        //            Employee[]? storedData = JsonSerializer.Deserialize<Employee[]>(jsonString);
+        //            if(storedData != null)
+        //            {
+        //                Employees = storedData.ToList();
 
-        void saveToDisk()
-        {
-            string jsonString = JsonSerializer.Serialize(employees);
-            File.WriteAllText(path, jsonString);
-        }
+        //            }
+        //            else
+        //            {
+        //                Employees = new List<Employee>();
+        //            }
+        //        }
+        //        catch
+        //        {
+
+        //            Employees = new List<Employee>();
+        //            saveToDisk();
+        //        }
+        //    }
+        //}
+
+        //void saveToDisk()
+        //{
+        //    string jsonString = JsonSerializer.Serialize(Employees);
+        //    File.WriteAllText(path, jsonString);
+        //}
         public Employee[] GetAll()
         {
-            return employees
+            return context.Employees
                 .ToArray();
         }
         public void Add(Employee employee)
         {
 
-            employee.Id = employees.Count == 0 ? 1 : employees.Max(e => e.Id) + 1;
+            //employee.Id = Employees.Count == 0 ? 1 : Employees.Max(e => e.Id) + 1;
 
-            employees.Add(employee);
-            saveToDisk();
+            context.Employees.Add(employee);
+            //saveToDisk();
+            context.SaveChanges();
         }
 
         public Employee? GetById(int id)
         {
-            return employees
+            return context.Employees
                 .FirstOrDefault(e => e.Id == id);
         }
-        public void Delete(int id)
-        {
-            var index = employees.FindIndex(x => x.Id == id);
-            employees.RemoveAt(index);
-            saveToDisk();
-        }
+        //public void Delete(int id)
+        //{
+        //    //var index = Employees.FindIndex(x => x.Id == id);
+        //    Employees.RemoveAt(index);
+        //    saveToDisk();
+        //}
 
     }
 }
