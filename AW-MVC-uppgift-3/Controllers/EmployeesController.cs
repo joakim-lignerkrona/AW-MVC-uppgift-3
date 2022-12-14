@@ -1,4 +1,5 @@
 ﻿using AW_MVC_uppgift_3.Models;
+using AW_MVC_uppgift_3.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -47,7 +48,7 @@ namespace ACME.Controllers
         public IActionResult Delete(int id)
         {
 
-            service.Delete(id);
+            //service.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
