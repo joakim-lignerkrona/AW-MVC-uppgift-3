@@ -1,20 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿//using System.ComponentModel.DataAnnotations;
 
-namespace AW_MVC_uppgift_3.Models
-{
-    public class Employee
-    {
-        public int Id { get; set; }
+//namespace AW_MVC_uppgift_3.Models
+//{
+//    public class Employee
+//    {
+//        public int Id { get; set; }
 
-        [Display(Name = "Fist name")]
+//        [Display(Name = "Fist name")]
 
-        [Required(ErrorMessage = "Incorrect Username")]
-        public string Name { get; set; }
+//        [Required(ErrorMessage = "Incorrect Username")]
+//        public string Name { get; set; }
 
-        [Display(Name = "E-mail")]
-        [EmailAddress]
+//        [Display(Name = "E-mail")]
+//        [EmailAddress]
 
-        public string Email { get; set; }
+//        public string Email { get; set; }
 
-    }
-}
+//    }
+//}
