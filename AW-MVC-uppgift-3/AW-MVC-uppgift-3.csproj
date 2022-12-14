@@ -18,8 +18,4 @@
     <Folder Include="DataStorage\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataStorage\" />
-  </ItemGroup>
-
 </Project>
