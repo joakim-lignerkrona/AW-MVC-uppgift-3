@@ -60,4 +60,7 @@
   <ItemGroup>
     <Build Include="Employees.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="EmployeesSQL.publish.xml" />
+  </ItemGroup>
 </Project>
