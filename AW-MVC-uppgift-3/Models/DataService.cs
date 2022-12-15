@@ -1,4 +1,6 @@
 ﻿using AW_MVC_uppgift_3.Models.Entities;
+using AW_MVC_uppgift_3.Views.Employees;
+using System.ComponentModel.DataAnnotations;
 
 namespace AW_MVC_uppgift_3.Models
 {
@@ -48,9 +50,15 @@ namespace AW_MVC_uppgift_3.Models
         //    string jsonString = JsonSerializer.Serialize(Employees);
         //    File.WriteAllText(path, jsonString);
         //}
-        public Employee[] GetAll()
+        public IndexVM[] GetAll()
         {
             return context.Employees
+                .Select(o => new IndexVM
+                {
+                   Name =  o.Name,
+                   Email = o.Email,
+                   ShowAsHighlighted = o.Email.StartsWith("admin"),
+                })
                 .ToArray();
         }
         public void Add(Employee employee)
