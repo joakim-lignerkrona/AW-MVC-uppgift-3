@@ -1,6 +1,7 @@
+@using AW_MVC_uppgift_3.Views.Employees;
 
 ﻿
-@model Employee[]
+@model IndexVM[]
 @{
     ViewBag.Title = "Employees";
     ViewBag.Heading = "All Employees";
@@ -9,7 +10,7 @@
         @{
             foreach(var employee in Model)
             {
-            <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.Id" class="list-group-item list-group-item-action">
+            <a asp-controller="Employees" asp-action="Details" asp-route-id="@employee.ID" class="list-group-item list-group-item-action">
             
                    @employee.Name
             </a>
