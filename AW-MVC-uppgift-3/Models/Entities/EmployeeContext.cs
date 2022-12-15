@@ -17,8 +17,11 @@ public partial class EmployeeContext : DbContext
     {
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Employee__3214EC071561CB7A");
+            entity.HasKey(e => e.Id).HasName("PK__Employee__3214EC07EA833F48");
 
+            entity.Property(e => e.Created)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Name).HasMaxLength(30);
         });
