@@ -17,7 +17,9 @@ public partial class EmployeeContext : DbContext
     {
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Employee__3214EC07EA833F48");
+
+            entity.HasKey(e => e.Id).HasName("PK__Employee__3214EC070889E72B");
+
 
             entity.Property(e => e.Created)
                 .HasDefaultValueSql("(getdate())")
