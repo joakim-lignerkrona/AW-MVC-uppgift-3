@@ -10,4 +10,8 @@ public partial class Employee
     public string Name { get; set; } = null!;
 
     public string? Email { get; set; }
+
+    public int Visited { get; set; }
+
+    public DateTime Created { get; set; }
 }
