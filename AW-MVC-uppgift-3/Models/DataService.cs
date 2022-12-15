@@ -1,6 +1,5 @@
 ﻿using AW_MVC_uppgift_3.Models.Entities;
 using AW_MVC_uppgift_3.Views.Employees;
-using System.ComponentModel.DataAnnotations;
 
 namespace AW_MVC_uppgift_3.Models
 {
@@ -55,9 +54,10 @@ namespace AW_MVC_uppgift_3.Models
             return context.Employees
                 .Select(o => new IndexVM
                 {
-                   Name =  o.Name,
-                   Email = o.Email,
-                   ShowAsHighlighted = o.Email.StartsWith("admin"),
+                    ID = o.Id,
+                    Name = o.Name,
+                    Email = o.Email,
+                    ShowAsHighlighted = o.Email.StartsWith("admin"),
                 })
                 .ToArray();
         }
@@ -78,12 +78,15 @@ namespace AW_MVC_uppgift_3.Models
             return context.Employees
                 .FirstOrDefault(e => e.Id == id);
         }
-        //public void Delete(int id)
-        //{
-        //    //var index = Employees.FindIndex(x => x.Id == id);
-        //    Employees.RemoveAt(index);
-        //    saveToDisk();
-        //}
+        public void Delete(int id)
+        {
+            //var index = Employees.FindIndex(x => x.Id == id);
+            //Employees.RemoveAt(index);
+            //saveToDisk();
+
+            var removed = context.Remove(GetById(id));
+            context.SaveChanges();
+        }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AW_MVC_uppgift_3.Models;
 using AW_MVC_uppgift_3.Models.Entities;
+using AW_MVC_uppgift_3.Views.Employees;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -29,11 +30,18 @@ namespace ACME.Controllers
         }
 
         [HttpPost("create")]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(CreateVM employee)
         {
             if(!ModelState.IsValid)
                 return View();
-            service.Add(employee);
+
+            var converted = new Employee
+            {
+                Email = employee.Email,
+                Name = employee.Name
+            };
+
+            service.Add(converted);
             return RedirectToAction(nameof(Index));
         }
         [HttpGet("details/{id}")]
@@ -48,7 +56,7 @@ namespace ACME.Controllers
         public IActionResult Delete(int id)
         {
 
-            // service.Delete(id);
+            service.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
