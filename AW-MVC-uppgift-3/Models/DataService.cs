@@ -1,5 +1,4 @@
 ﻿using AW_MVC_uppgift_3.Models.Entities;
-using System.Text.Json;
 
 namespace AW_MVC_uppgift_3.Models
 {
@@ -58,6 +57,8 @@ namespace AW_MVC_uppgift_3.Models
         {
 
             //employee.Id = Employees.Count == 0 ? 1 : Employees.Max(e => e.Id) + 1;
+            employee.Email = employee.Email.ToLower();
+            employee.Name = employee.Name.ToLower();
 
             context.Employees.Add(employee);
             //saveToDisk();
